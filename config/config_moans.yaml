@@ -1,0 +1,44 @@
+# ####################################################
+# Configuration file for the blob detector
+
+# Parameter values after the semi-columns can be
+# modified as needed but section names and indentation
+# shoud be kept as is.
+# 
+# Make sure there is a space between the : and the
+# parameter value.
+# ####################################################
+
+AUDIO:
+    channel: 0
+    extension: '.wav'
+    new_sampling_rate: 96000
+
+SPECTROGRAM:
+    frame_sec: 0.1 
+    nfft_sec: 0.1
+    step_sec: 0.03
+    fmin_hz: 5000
+    fmax_hz: 40000
+    window_type: 'hann'
+    dB: True
+    use_dask: True
+    dask_chunks: 40
+
+DENOISER:
+    denoiser_name: 'median_equalizer'
+    window_duration_sec: 1
+    use_dask: True
+    dask_chunks: [2048,2000]
+
+DETECTOR:
+    detector_name: 'BlobDetector'
+    kernel_duration_sec: 0.05
+    kernel_bandwidth_hz: 1000
+    threshold: 8
+    duration_min_sec: 0.3
+    bandwidth_min_hz: 2000
+    use_dask: True
+    dask_chunks: [2048,2000]
+    label: 'W-HF'
+
